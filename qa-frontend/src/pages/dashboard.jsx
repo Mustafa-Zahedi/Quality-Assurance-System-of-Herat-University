@@ -39,6 +39,11 @@ const Home = () => {
             منبع باز در گیت هاب برای علاقه مندان و محصلین سالهای بعد بخاطر ارتقا
             و هرگونه تغییر قرار دارد.
           </h6>
+          <span className="text-xs text-blue-500 underline">
+            <a href="https://github.com/Mustafa-Zahedi/Quality-Assurance-System-of-Herat-University">
+              آدرس گیت هاب پروژه
+            </a>
+          </span>
         </div>
       </footer>
     </section>
