@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "vazir black";
+  src: url("/public/fonts/Vazir-Black.ttf") format("ttf"),
+    url("/public/fonts/Vazir-Black-FD.woff") format("woff"),
+    url("/public/fonts/Vazir-Black-FD.woff2") format("woff2");
+}
+@font-face {
+  font-family: "vazir bold";
+  src: url("/public/fonts/Vazir-Bold.ttf") format("ttf"),
+    url("/public/fonts/Vazir-Bold-FD.woff") format("woff"),
+    url("/public/fonts/Vazir-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "vazir";
+  src: url("/public/fonts/Vazir-Medium.ttf") format("ttf"),
+    url("/public/fonts/Vazir-Medium-FD.woff") format("woff"),
+    url("/public/fonts/Vazir-Medium.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btnS {
+  position: relative;
+  border: none;
+  transition: 0.1s ease-in;
+  z-index: 1;
+}
+.btnS::before,
+.btnS::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+}
+
+.btnS1:hover {
+  box-shadow: -10px 10px 0px rgb(73, 138, 138);
+}
+
+.btnS2:hover {
+  box-shadow: inset -10.5em 0 0 0 #ff96ad, inset 10.5em 0 0 0 #e63d3dc7;
+}
+.btnS2:hover::after {
+  width: 10%;
+}
+
+.btnS3:hover {
+  background: #0eb5df;
+  box-shadow: 0 0 5px #0eb5df, 0 0 25px #0eb5df, 0 0 50px #0eb5df;
+}
