@@ -81,8 +81,8 @@ export class UserService {
       delete create.password;
       return res.status(200).json({ ...create, accessToken: token });
     } catch (err) {
-      logger.error("Error happened while registering user.");
-      return res.status(500).json({ msg: "INTERNAL_SERVER_ERROR" });
+      logger.error("Error happened while registering user.", err);
+      return res.status(500).json({ msg: "This faculty already had a user." });
     }
   }
 

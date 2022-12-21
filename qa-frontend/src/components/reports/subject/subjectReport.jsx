@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Loading from "../../loading";
 import { httpGetReport } from "../../../services/report";
 import { BarChart } from "../barChart";
@@ -6,7 +6,8 @@ import { ToastMsg } from "../../TaostMsg";
 import { toast } from "react-toastify";
 import Table from "./table";
 import useFetch from "../../../hooks/useFetch";
-
+import { useReactToPrint } from "react-to-print";
+import { PrinterIcon } from "@heroicons/react/24/outline";
 const SubjectReport = ({
   teacherId,
   year,
@@ -19,6 +20,11 @@ const SubjectReport = ({
   const [reports, setReport] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [response, setResponse] = useState(null);
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const { loading: laodingdata, data: questions, error } = useFetch("question");
 
@@ -60,7 +66,7 @@ const SubjectReport = ({
   }, [semester, semester_type, subjectId, teacherId, year]);
 
   const filterdQuestions = questions
-    ?.filter((item) => item.status)
+    ?.filter((item) => item)
     ?.map(
       (item) =>
         chartData
@@ -73,7 +79,8 @@ const SubjectReport = ({
               }
           )
           .filter((item) => item)[0]
-    );
+    )
+    .filter((item) => item);
 
   if (loading || laodingdata) return <Loading />;
 
@@ -83,7 +90,7 @@ const SubjectReport = ({
         somthing went wrong with connection to database
       </div>
     );
-  console.log(filterdQuestions, chartData);
+  // console.log(filterdQuestions, chartData);
   if (response?.status === 404)
     return (
       <section className="font-vazirBold p-2 md:p-5 lg:p-10 w-full">
@@ -101,52 +108,38 @@ const SubjectReport = ({
 
   return (
     <section>
-      <div className="mb-10 flex flex-wrap w-full justify-end gap-5">
+      <div className="mb-3 flex flex-wrap w-full justify-end gap-5">
         <button
           className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           onClick={() => setSelected(null)}
         >
           گزارش جدید
         </button>
-      </div>
-      <ul className="grid grid-cols-2 bg-cyan-200 rounded py-5 px-10">
-        <li className="flex gap-3">
-          <span>آیدی فورم:</span>
-          <span>{reports?.formId}</span>
-        </li>
-        <li className="flex gap-3">
-          <span>استاد:</span>
-          <span>{reports?.teacher?.fa_name}</span>
-        </li>
-        <li className="flex gap-3">
-          <span>مضمون:</span>
-          <span>{reports?.subject?.name}</span>
-        </li>
-        <li className="flex gap-3">
-          <span>سال:</span>
-          <span>{reports?.year}</span>
-        </li>
-        <li className="flex gap-3">
-          <span>سمستر:</span>
+        <button
+          type="button"
+          className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          onClick={handlePrint}
+        >
+          <span>پرینت</span>
           <span>
-            {reports?.semester}
-            {" - "}
-            {reports?.semester_type}
+            <PrinterIcon className="h-6 w-6" />
           </span>
-        </li>
-      </ul>
+        </button>
+      </div>
 
       {filterdQuestions?.length > 0 && (
         <div>
-          <article>
-            <Table filterdQuestions={filterdQuestions} />
+          <article ref={componentRef} dir="rtl">
+            <Table filterdQuestions={filterdQuestions} reports={reports} />
           </article>
           <div>
             <BarChart
-              chartData={filterdQuestions.map((item) => ({
-                label: item.question.id,
-                percent: item.percent,
-              }))}
+              chartData={filterdQuestions?.map((item) => {
+                return {
+                  label: item?.question?.id,
+                  percent: item?.percent,
+                };
+              })}
               label="نمودار فیصدی سوالات"
               y_label="درصدی"
               x_label="آیدی سوال"

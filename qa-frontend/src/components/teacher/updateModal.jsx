@@ -59,7 +59,7 @@ export default function UpdateModal({
       state: data.state,
       type: data.type,
     });
-    console.log("put", res);
+    // console.log("put", res);
     if (res) {
       refetch();
       setLoading(false);
@@ -95,10 +95,18 @@ export default function UpdateModal({
           <Input
             register={register}
             errors={errors}
-            label="حالت"
+            label="حالت مدنی"
+            name="state"
+            type="text"
+            defaultValue={teacher.state}
+          />
+          <Input
+            register={register}
+            errors={errors}
+            label="نوعیت"
             name="type"
             type="text"
-            placeholder="مثلا: فعال"
+            placeholder="دایمی"
             defaultValue={teacher.type}
           />
           <Select

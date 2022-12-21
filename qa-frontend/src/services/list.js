@@ -21,6 +21,22 @@ export const departments = [
 export const teachers = ["علی", "احمد", "محمود", "حمید", "حسین"];
 
 export const semester_type = ["بهاری", "خزانی"];
+export const semesterTypeForFiltring = ["بهاری", "خزانی"];
+export const yearsForFiltring = [
+  [2021, 2021],
+  [2022, 2022],
+  [2023, 2023],
+  [2024, 2024],
+  [2025, 2025],
+  [2026, 2026],
+  [2027, 2027],
+  [2028, 2028],
+  [2029, 2029],
+  [2030, 2030],
+  [2031, 2031],
+  [2032, 2032],
+  [2033, 2033],
+];
 export const semester_number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 export const questions = [

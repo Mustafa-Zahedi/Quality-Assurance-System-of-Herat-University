@@ -19,8 +19,8 @@ const CheckId = ({ setData }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  // console.log(data);
   const onSubmit = async (e) => {
-    console.log(e);
     const res = await httpGetForm(e.id);
     if (res) {
       if (res.ok) {
@@ -55,7 +55,7 @@ const CheckId = ({ setData }) => {
           </label>
           <div>
             <input
-              type="number"
+              type="text"
               dir="ltr"
               autoFocus
               {...register("id")}

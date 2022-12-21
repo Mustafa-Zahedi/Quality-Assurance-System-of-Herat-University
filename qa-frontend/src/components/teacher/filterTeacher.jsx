@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
-import useFetch from "../../hooks/useFetch";
-import Loading from "../loading";
 import Select from "../SelectForFilter";
 
 const schema = yup.object({
@@ -25,8 +23,6 @@ const FilterTeacher = ({
   const [selectedFaculty, setSelectedFaculty] = useState([]);
   const [cancelFilter, setCancelFilter] = useState(false);
 
-  // const { data: faculties, loading, error } = useFetch("faculty");
-
   const {
     control,
     reset,
@@ -42,17 +38,6 @@ const FilterTeacher = ({
     setSelectedDep(null);
     setSelectedFac(null);
   }, [cancelFilter]);
-
-  // if (loading) return <Loading />;
-
-  // if (error)
-  //   return (
-  //     <div className="grid place-content-center">
-  //       somthing went wrong with connection to database
-  //     </div>
-  //   );
-
-  console.log("filterTeacher");
 
   return (
     <div className="flex flex-wrap gap-5 w-full px-5">

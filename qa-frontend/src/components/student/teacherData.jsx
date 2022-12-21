@@ -3,7 +3,7 @@ import React from "react";
 const TeacherData = ({ formData }) => {
   const { teacher } = formData;
   return (
-    <section className="px-5 py-5 bg-stone-200 font-vazirBlack text-lg shadow-md mb-5">
+    <section className="px-5 py-5 font-vazirBlack text-lg border-b border-gray-700 bg-cyan-800 text-white">
       <div className="flex flex-wrap gap-5 justify-between">
         <article className="flex gap-5 justify-center">
           <ul className="grid gap-1">

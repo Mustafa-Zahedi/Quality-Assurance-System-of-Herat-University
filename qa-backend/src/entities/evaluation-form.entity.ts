@@ -20,8 +20,10 @@ export enum semesterType {
 
 @Entity()
 export class EvaluationFormEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @Column({
+    primary: true,
+  })
+  id: string;
 
   @Column()
   year: number;

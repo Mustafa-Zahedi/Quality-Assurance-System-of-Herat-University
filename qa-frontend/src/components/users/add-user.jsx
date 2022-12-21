@@ -63,6 +63,10 @@ const AddUser = () => {
               <ToastMsg text={"این حساب کاربری قبلا ایجاد شده است"} />,
               { position: "bottom-left" }
             )
+          : res.status === 500
+          ? toast.error(
+              <ToastMsg text={"فاکولته مورد نظر از قبل کاربر دارد"} />
+            )
           : toast.error(
               <ToastMsg text={"متاسفانه حساب کاربری مورد نظر ایجاد نشد"} />,
               { position: "bottom-left" }

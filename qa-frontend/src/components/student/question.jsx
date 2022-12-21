@@ -1,18 +1,18 @@
 import { RadioGroup } from "@headlessui/react";
 
 const Options = [
-  { name: "عالی", value: 4 },
-  { name: "خوب", value: 3 },
-  { name: "متوسط", value: 2 },
-  { name: "کم", value: 1 },
-  { name: "خیلی کم", value: 0 },
+  { name: "عالی", value: 4, icon: "😀" },
+  { name: "خوب", value: 3, icon: "🙂" },
+  { name: "متوسط", value: 2, icon: "😐" },
+  { name: "کم", value: 1, icon: "😕" },
+  { name: "خیلی کم", value: 0, icon: "😟" },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Question = ({ Controller, control, errors, name, question }) => {
+const Question = ({ ndx, Controller, control, errors, name, question }) => {
   // const [options, setOptions] = useState(Options[2]);
   // console.log(errors);
   return (
@@ -27,7 +27,7 @@ const Question = ({ Controller, control, errors, name, question }) => {
         },
       }}
       render={({ field: { onChange } }) => (
-        <div className="my-1 pt-5 grid w-full">
+        <div className="my-1 grid w-full">
           <RadioGroup
             // value={options}
             onChange={(e) => {
@@ -37,7 +37,10 @@ const Question = ({ Controller, control, errors, name, question }) => {
             }}
             className="mt-2 w-full"
           >
-            <RadioGroup.Label>{question}</RadioGroup.Label>
+            <RadioGroup.Label>
+              <span className="pl-2">{ndx + 1}.</span>
+              {question}
+            </RadioGroup.Label>
             <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-3 md:grid-cols-5">
               {Options.map((option) => (
                 <RadioGroup.Option
@@ -53,7 +56,10 @@ const Question = ({ Controller, control, errors, name, question }) => {
                     )
                   }
                 >
-                  <RadioGroup.Label as="span">{option.name}</RadioGroup.Label>
+                  <RadioGroup.Label as="span" className="inline-block ">
+                    <span>{option?.name}</span>
+                    {/* <span>{option?.icon}</span> */}
+                  </RadioGroup.Label>
                 </RadioGroup.Option>
               ))}
             </div>

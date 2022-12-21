@@ -45,7 +45,6 @@ const SubjectReportSelection = () => {
     : subjects;
 
   const {
-    register,
     handleSubmit,
     resetField,
     reset,
@@ -143,12 +142,9 @@ const SubjectReportSelection = () => {
                 className={!departments && "disabled"}
               />
               <InputYear
-                register={register}
                 errors={errors}
                 label="سال"
                 name="year"
-                type="Date"
-                useForm={useForm}
                 Controller={Controller}
                 control={control}
                 defaultValue={Date.now()}

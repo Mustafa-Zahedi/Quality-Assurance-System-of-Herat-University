@@ -30,7 +30,6 @@ const AddTeacherForm = ({
         className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 group"
         onClick={() => setAddNewTeacher(false)}
       >
-        {/* <XMarkIcon className="text-gray-500 group-hover:text-black h-4 w-4" /> */}
         <span>بازگشت</span>
       </button>
       <FormBorder label={"اضافه کردن استاد"} className="lg:mx-40">
@@ -56,10 +55,10 @@ const AddTeacherForm = ({
           <Input
             register={register}
             errors={errors}
-            label="حالت"
+            label="حالت مدنی"
             name="state"
             type="text"
-            placeholder="مثلا: تعلیق"
+            placeholder="مجرد | متاهل"
           />
           <Input
             register={register}

@@ -78,7 +78,7 @@ export default function UpdateQuestion({
             control={control}
             errors={errors}
             options={[
-              ["پیش نویس", false],
+              ["متوقف", false],
               ["فعال", true],
             ]}
             placeholder="حالت"

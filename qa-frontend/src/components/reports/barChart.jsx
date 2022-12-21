@@ -6,7 +6,10 @@ ChartJS.register(...registerables);
 export const BarChart = ({ chartData, label, title, y_label, x_label }) => {
   // console.log("barChart", chartData);
   return (
-    <div className="my-10 border-2 p-5 rounded border-red-200 shadow-lg">
+    <div
+      dir="rtl"
+      className="my-10 border-2 p-5 rounded border-red-200 shadow-lg font-vazirBold"
+    >
       <h6 className="text-gray-700">{label}</h6>
       <Bar
         options={{
@@ -16,7 +19,7 @@ export const BarChart = ({ chartData, label, title, y_label, x_label }) => {
               max: 100,
             },
             x: {
-              title: { display: true, text: x_label },
+              title: { font: "vazir;", display: true, text: x_label },
             },
           },
           plugins: {
@@ -26,7 +29,7 @@ export const BarChart = ({ chartData, label, title, y_label, x_label }) => {
                   return `${x_label + " " + context[0].label}`;
                 },
               },
-              titleFont: { size: "20px" },
+              titleFont: { size: "14px" },
             },
           },
         }}
@@ -34,29 +37,29 @@ export const BarChart = ({ chartData, label, title, y_label, x_label }) => {
           labels: [...chartData?.map((item) => item.label)],
           datasets: [
             {
+              type: "line",
+              label,
+              data: [...chartData?.map((item) => item.percent)],
+              borderColor: ["#6366f1"],
+              tension: 0.4,
+            },
+            {
               axis: "y",
               label: label,
               data: [...chartData?.map((item) => item.percent)],
               fill: true,
               backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-                "rgba(255, 205, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(201, 203, 207, 0.2)",
+                "#f87171",
+                "#facc15",
+                "#65a30d",
+                "#2563eb",
+                "#fb923c",
+                "#e11d48",
+                "#db2777",
               ],
-              borderColor: [
-                "rgb(255, 99, 132)",
-                "rgb(255, 159, 64)",
-                "rgb(255, 205, 86)",
-                "rgb(75, 192, 192)",
-                "rgb(54, 162, 235)",
-                "rgb(153, 102, 255)",
-                "rgb(201, 203, 207)",
-              ],
-              borderWidth: 1,
+              minBarLength: 1,
+              barThickness: 50,
+              maxBarThickness: 50,
             },
           ],
         }}

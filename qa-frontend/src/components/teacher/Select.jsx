@@ -43,7 +43,6 @@ const Select = ({
       render={({ field: { onChange } }) => (
         <Listbox
           onChange={(e) => {
-            // console.log(e, "onchange");
             onChange(e[1]);
             setSelectedItem(e);
           }}

@@ -4,7 +4,7 @@ import jwtDecoder from "jwt-decode";
 const ProtectedRoutes = () => {
   const token = sessionStorage.getItem("token");
   const { user } = jwtDecoder(token);
-  console.log("user", user);
+  // console.log("user", user);
   return user.level ? (
     <Outlet />
   ) : (

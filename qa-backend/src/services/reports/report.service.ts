@@ -201,6 +201,8 @@ function reportOfEachSubjectForTeacher(forms: any[]) {
 
     if (subs > 0) {
       all.push({
+        semester_type: form.semester_type,
+        semester: form.semester,
         teacher: form.teacher,
         teacherId: form.teacher.id,
         subject: form.subject,

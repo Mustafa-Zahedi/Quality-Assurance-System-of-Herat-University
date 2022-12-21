@@ -14,6 +14,7 @@ const Select = ({
   control,
   options,
   label,
+  itemNumber,
   placeholder,
   errors,
   setSelectedOptions,
@@ -38,7 +39,7 @@ const Select = ({
     // console.log("useEffect", selectedItem);
   }, [defaultValue, placeholder, reset]);
 
-  console.log("select", selectedItem);
+  // console.log("select", selectedItem);
 
   return (
     <Controller
@@ -52,7 +53,7 @@ const Select = ({
           onChange={(e) => {
             // console.log(e, "onchange");
             onChange(e[1]);
-            setSelected(e[1]);
+            setSelected && setSelected(e[1]);
             setSelectedItem(e);
           }}
           as={"div"}
@@ -62,16 +63,16 @@ const Select = ({
         >
           {({ open }) => (
             <>
-              <Listbox.Label className="block text-sm font-medium">
+              {/* <Listbox.Label className="block text-sm font-medium">
                 {label}
-              </Listbox.Label>
-              <div className="relative mt-1 flex w-44">
+              </Listbox.Label> */}
+              <div className="relative mt-1 flex w-fit min-w-[8rem]">
                 <Listbox.Button
-                  className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-right shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 sm:text-sm disabled:text-gray-300"
+                  className="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pr-3 pl-10 text-right shadow-sm focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 sm:text-sm disabled:text-gray-300"
                   disabled={className}
                 >
                   <span className="block truncate">{selectedItem[0]}</span>
-                  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-1 mr-2">
+                  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pr-1 ml-2">
                     <ChevronUpDownIcon
                       className="h-5 w-5 text-gray-400"
                       aria-hidden="true"
@@ -87,7 +88,7 @@ const Select = ({
                   leaveFrom="transform scale-100 opacity-100"
                   leaveTo="transform scale-90 opacity-0"
                 >
-                  <Listbox.Options className="absolute top-10 w-full z-10 mt-1 max-h-60  overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                  <Listbox.Options className="absolute top-10 w-[10rem] z-10 mt-1 max-h-60  overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                     {options?.map((opt, ndx) => (
                       <Listbox.Option
                         key={ndx}
@@ -104,10 +105,11 @@ const Select = ({
                             <span
                               className={classNames(
                                 selected ? "font-semibold" : "font-normal",
-                                "block truncate"
+                                "block"
                               )}
                             >
                               {opt[0]}
+                              {opt?.[2] && `(${opt?.[2]})`}
                             </span>
 
                             {selected ? (

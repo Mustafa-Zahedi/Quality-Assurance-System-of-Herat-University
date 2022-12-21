@@ -26,7 +26,7 @@ const schema = yup.object({
     .nullable()
     .required("لطفا این قسمت را تکمیل نمایید"),
   date: yup.date().required("لطفا تاریخ مورد نظرتان را وارد نمایید"),
-  des: yup.string().required("لطفا این قسمت را تکمیل نمایید"),
+  des: yup.string(),
 });
 
 const Teachers = () => {

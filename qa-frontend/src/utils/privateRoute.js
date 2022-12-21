@@ -9,9 +9,9 @@ const PrivateRoutes = () => {
   useEffect(() => {
     if (token) {
       const {
-        user: { faculty },
+        user: { faculty, level },
       } = jwtDecoder(token);
-      setFaculty(faculty);
+      if (!level) setFaculty(faculty);
     }
   }, [token]);
 

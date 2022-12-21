@@ -42,6 +42,7 @@ export class TeacherService {
         departmentId: +inputData.departmentId,
         gender: inputData.gender,
         state: inputData.state,
+        type: inputData.type,
         des: inputData.des,
         createdAt: new Date(),
       });
