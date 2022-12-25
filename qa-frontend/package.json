@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "author":"Mustafa-Zahedi",
+  "author":"Mustafa Zahedi",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.3",
